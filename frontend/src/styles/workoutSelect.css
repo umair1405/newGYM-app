@@ -1,0 +1,47 @@
+.workout-select-container {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+}
+
+.workout-select-title {
+  text-align: center;
+  color: #e10600;
+  margin-bottom: 30px;
+}
+
+.workout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.workout-card {
+  background: #1e1e1e;
+  padding: 25px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.workout-card:hover {
+  transform: translateY(-5px);
+  background: #242424;
+}
+
+.workout-card button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.workout-card button:hover {
+  color: #e10600;
+}
