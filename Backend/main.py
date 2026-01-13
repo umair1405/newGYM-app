@@ -1,7 +1,7 @@
 # backend/main.py
 from fastapi import FastAPI
 from database import Base, engine
-from routers import auth, attendance, workout
+from routers import auth, attendance, workout, users , memberships, trainers,payments,notifications ,admin
 from fastapi.middleware.cors import CORSMiddleware
 import models
 from fastapi.staticfiles import StaticFiles
@@ -28,4 +28,9 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(attendance.router)
 app.include_router(workout.router)
-
+app.include_router(users.router)
+app.include_router(memberships.router)
+app.include_router(trainers.router)
+app.include_router(payments.router)
+app.include_router(notifications.router)
+app.include_router(admin.router)

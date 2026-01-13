@@ -54,6 +54,6 @@ def login(request: schemas.LoginRequest, db: Session = Depends(get_db)):
         )
 
     return {
-        "id": user.id,
+        "user_id": user.id,
         "email": user.email
     }

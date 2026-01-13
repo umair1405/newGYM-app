@@ -8,20 +8,32 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const nav = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post("http://127.0.0.1:8000/auth/login", {
-        email,
-        password,
-      });
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await axios.post("http://127.0.0.1:8000/auth/login", {
+      email,
+      password,
+    });
 
-      localStorage.setItem("user_id", res.data.user_id);
-      nav("/checkin");
-    } catch (err) {
-      alert(err?.response?.data?.detail || "Invalid email or password");
+    const userId = res.data.user_id;
+
+    if (!userId) {
+      alert("Login failed: user id not received");
+      return;
     }
-  };
+
+    localStorage.clear(); // 🔥 reset previous session
+    localStorage.setItem("user_id", userId);
+    localStorage.setItem("is_checked_in", "false"); // 🔒 navbar hidden
+
+    nav("/checkin");
+  } catch (err) {
+    alert(err?.response?.data?.detail || "Invalid email or password");
+  }
+};
+
+
 
   return (
     <div className="auth-container">

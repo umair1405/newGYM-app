@@ -1,4 +1,6 @@
 from pydantic import BaseModel, EmailStr, Field
+from datetime import datetime
+from pydantic import ConfigDict
 
 class UserCreate(BaseModel):
     email: EmailStr
@@ -7,6 +9,9 @@ class UserCreate(BaseModel):
 class LoginRequest(BaseModel):
     email: EmailStr
     password: str
+    
 class LoginResponse(BaseModel):
-    id: int
+    user_id: int
     email: EmailStr
+    
+

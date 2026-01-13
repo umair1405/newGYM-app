@@ -8,6 +8,10 @@ export default function Checkout() {
   const finish = async () => {
     const attendanceId = localStorage.getItem("attendance_id");
     await API.post(`/attendance/checkout?attendance_id=${attendanceId}`);
+    
+    localStorage.removeItem("attendance_id"); 
+    localStorage.setItem("is_checked_in", "false"); // 🔒 hide navbar again
+
      nav("/");
   };
 

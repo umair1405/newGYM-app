@@ -7,9 +7,10 @@ export default function CheckIn() {
   const nav = useNavigate();
 
   const checkIn = async () => {
-    const userId = 1; // get this from auth / context / localStorage
+    const userId = localStorage.getItem("user_id"); // ✅ 
     const res = await API.post(`/attendance/checkin?user_id=${userId}`);
     localStorage.setItem("attendance_id", res.data.attendance_id);
+    localStorage.setItem("is_checked_in", "true"); // ✅ NAVBAR UNLOCKED
     nav("/workouts");
   };
 
